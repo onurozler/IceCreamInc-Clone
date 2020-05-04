@@ -481,11 +481,11 @@
             </e>
             <e p="IceCreamSystem" t="Include">
               <e p="Base" t="Include">
+                <e p="CreamSpline.cs" t="Include" />
                 <e p="IceCreamBase.cs" t="Include" />
               </e>
               <e p="Managers" t="Include">
-                <e p="IceCreamSpline.cs" t="Include" />
-                <e p="IceCreamSplineManager.cs" t="Include" />
+                <e p="CreamSplineManager.cs" t="Include" />
               </e>
             </e>
             <e p="Managers" t="Include">
