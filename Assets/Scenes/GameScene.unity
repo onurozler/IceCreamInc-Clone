@@ -2061,7 +2061,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8d59f4c593b5c4da798c89ba2b7818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IceCreamBase: {fileID: 490344712}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,7 +3736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _creamMachineBase: {fileID: 477842769}
+  _iceCreamBase: {fileID: 490344712}
   _playerInput: {fileID: 842038849}
+  _levelGenerator: {fileID: 1171668082}
 --- !u!114 &2014350041
 MonoBehaviour:
   m_ObjectHideFlags: 0

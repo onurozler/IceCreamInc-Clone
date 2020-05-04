@@ -24,6 +24,11 @@ namespace Game.CreamMachineSystem.Controllers
             UpdateLayer();
         }
 
+        private void GenerateCream()
+        {
+            
+        }
+        
         private void UpdateLayer()
         {
             if(_currentIceCream == null)

@@ -22,18 +22,6 @@ namespace Helpers
                 return instance;
             }
         }
-
-        public virtual void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this as T;
-                DontDestroyOnLoad(this.gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
+        
     }
 }

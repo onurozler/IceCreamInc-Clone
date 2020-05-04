@@ -1,4 +1,5 @@
-﻿using BezierSolution;
+﻿using System;
+using BezierSolution;
 using DG.Tweening;
 using Game.IceCreamSystem.Base;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace Game.CreamMachineSystem.Controllers
 {
     public class CreamMachineMovementController : BezierWalkerWithSpeed
     {
+        public Action OnGenerateCream;
+        
         public CreamPiece testPiece;
 
         private Transform _iceCreamFilter;
@@ -55,7 +58,9 @@ namespace Game.CreamMachineSystem.Controllers
             _pieceChecker += Time.deltaTime;
             if (_pieceChecker > 0.15f)
             {
+                OnGenerateCream.SafeInvoke();
                 _pieceChecker = 0;
+                
                 var piece = Instantiate(testPiece);
                 piece.transform.position = _iceCreamFilter.position;
                 piece.transform.DOMove(spline.GetPoint(NormalizedT),3f);

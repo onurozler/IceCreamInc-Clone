@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4705960801086304615}
   - component: {fileID: 4561042499139307397}
   m_Layer: 0
-  m_Name: CreamPieceChocolate
+  m_Name: CreamPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc70b9a958054314fadaf8a110b51c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreamType: 1
+  CreamType: 0
