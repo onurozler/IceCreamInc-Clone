@@ -6,12 +6,12 @@ namespace Game.IceCreamSystem.Base
 {
     public class IceCreamBase : MonoBehaviour
     {
-        private CreamSplineManager _creamSplineManager;
+        public CreamSplineManager CreamSplineManager;
         
         public void Initialize()
         {
             var creamSplines = GetComponentsInChildren<CreamSpline>().ToList();
-            _creamSplineManager = new CreamSplineManager(creamSplines);
+            CreamSplineManager = new CreamSplineManager(creamSplines);
         }
     }
 }

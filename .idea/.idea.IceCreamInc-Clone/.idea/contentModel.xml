@@ -475,7 +475,6 @@
                 <e p="CreamMachineBase.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
-                <e p="CreamMachineInputController.cs" t="Include" />
                 <e p="CreamMachineMovementController.cs" t="Include" />
               </e>
             </e>
@@ -491,8 +490,15 @@
             <e p="Managers" t="Include">
               <e p="GameManager.cs" t="Include" />
             </e>
+            <e p="View" t="Include">
+              <e p="Helpers" t="Include">
+                <e p="PlayerInputController.cs" t="Include" />
+              </e>
+              <e p="PlayerView.cs" t="Include" />
+            </e>
           </e>
           <e p="Helpers" t="Include">
+            <e p="CreamButton.cs" t="Include" />
             <e p="Utils" t="Include">
               <e p="OnurExtensionMethods.cs" t="Include" />
               <e p="Timer.cs" t="Include" />

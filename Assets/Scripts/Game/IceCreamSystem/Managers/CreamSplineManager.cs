@@ -13,6 +13,11 @@ namespace Game.IceCreamSystem.Managers
             _iceCreamSplines = splines;
         }
 
+        public CreamSpline GetCreamByLayer(int layer)
+        {
+            return _iceCreamSplines?.FirstOrDefault(x => x.CreamInfo.Layer == layer);
+        }
+        
         public void UpdateCreamInfos(List<CreamInfo> creamInfos)
         {
             foreach (var info in creamInfos)

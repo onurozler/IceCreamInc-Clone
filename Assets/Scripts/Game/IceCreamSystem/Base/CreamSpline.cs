@@ -8,7 +8,7 @@ namespace Game.IceCreamSystem.Base
     {
         NONE,
         CHOCOLATE,
-        MILK
+        VANILLA
     }
     
     [Serializable]
