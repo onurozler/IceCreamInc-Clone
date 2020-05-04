@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\ONUR OZLER\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ONUR OZLER\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_IceCreaInc - Clone.113505179.00" t="ExcludeRecursive" />
+    <e p="D:\My Projects\Unity\IceCreaInc - Clone" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="IceCreamTest.cs" t="Include" />
+        <e p="Plugins" t="Include">
+          <e p="BezierSolution" t="Include">
+            <e p="BezierPoint.cs" t="Include" />
+            <e p="BezierSpline.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="BezierPointEditor.cs" t="Include" />
+              <e p="BezierPointExtraDataDrawer.cs" t="Include" />
+              <e p="BezierSplineEditor.cs" t="Include" />
+              <e p="BezierUtils.cs" t="Include" />
+              <e p="BezierWalkerEditor.cs" t="Include" />
+              <e p="BezierWalkerLocomotionEditor.cs" t="Include" />
+              <e p="BezierWalkerWithSpeedEditor.cs" t="Include" />
+              <e p="BezierWalkerWithTimeEditor.cs" t="Include" />
+              <e p="ParticlesFollowBezierEditor.cs" t="Include" />
+            </e>
+            <e p="README.txt" t="Include" />
+            <e p="Utilities" t="Include">
+              <e p="BezierWalker.cs" t="Include" />
+              <e p="BezierWalkerLocomotion.cs" t="Include" />
+              <e p="BezierWalkerWithSpeed.cs" t="Include" />
+              <e p="BezierWalkerWithTime.cs" t="Include" />
+              <e p="ParticlesFollowBezier.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="IceCreaInc - Clone.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
