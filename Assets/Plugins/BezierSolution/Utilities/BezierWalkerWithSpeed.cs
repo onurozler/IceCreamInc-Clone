@@ -5,7 +5,6 @@ namespace BezierSolution
 {
 	public class BezierWalkerWithSpeed : BezierWalker
 	{
-		public bool IsActive;
 		public BezierSpline spline;
 		public TravelMode travelMode;
 
@@ -37,10 +36,9 @@ namespace BezierSolution
 		private bool onPathCompletedCalledAt1 = false;
 		private bool onPathCompletedCalledAt0 = false;
 
-		private void Update()
+		protected virtual void Update()
 		{
-			if(IsActive)
-				Execute( Time.deltaTime );
+			Execute( Time.deltaTime );
 		}
 
 		public override void Execute( float deltaTime )
