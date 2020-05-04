@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace BezierSolution
@@ -32,7 +33,7 @@ namespace BezierSolution
 		private bool isGoingForward = true;
 		public override bool MovingForward { get { return ( speed > 0f ) == isGoingForward; } }
 
-		public UnityEvent onPathCompleted = new UnityEvent();
+		public Action OnPathCompleted;
 		private bool onPathCompletedCalledAt1 = false;
 		private bool onPathCompletedCalledAt0 = false;
 
@@ -85,7 +86,7 @@ namespace BezierSolution
 #if UNITY_EDITOR
 						if( UnityEditor.EditorApplication.isPlaying )
 #endif
-							onPathCompleted.Invoke();
+							if(OnPathCompleted!=null)OnPathCompleted.Invoke();
 					}
 				}
 				else
@@ -113,7 +114,7 @@ namespace BezierSolution
 #if UNITY_EDITOR
 						if( UnityEditor.EditorApplication.isPlaying )
 #endif
-							onPathCompleted.Invoke();
+							if(OnPathCompleted!=null)OnPathCompleted.Invoke();
 					}
 				}
 				else

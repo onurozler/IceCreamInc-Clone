@@ -22,17 +22,15 @@ namespace Game.CreamMachineSystem.Base
         private void OnInstaller(PlayerInputController playerInputController)
         {
             _playerInputController = playerInputController;
-            _creamMachineMovementController = gameObject.AddComponent<CreamMachineMovementController>();
-            _creamMachineCreamController = gameObject.AddComponent<CreamMachineCreamController>();
-            
-            _creamMachineMovementController.Initialize();
-            _creamMachineCreamController.Initialize(_creamMachineMovementController);
+            _creamMachineMovementController = GetComponent<CreamMachineMovementController>(); 
+            //gameObject.AddComponent<CreamMachineMovementController>(); 
+            _creamMachineCreamController = new CreamMachineCreamController();
         }
         
         public void Initialize()
         {
             _creamMachineMovementController.Initialize();
-            _creamMachineMovementController.SetBezierSpline(CurrentIceCream.CreamSplineManager.GetCreamByLayer(0).BezierSpline);
+            _creamMachineCreamController.Initialize(_creamMachineMovementController,CurrentIceCream);
             InputEventsSubscriptions();
         }
 
