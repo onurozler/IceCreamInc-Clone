@@ -10,12 +10,16 @@ namespace Game.CreamMachineSystem.Controllers
     {
         public CreamPiece testPiece;
 
+        private Transform _iceCreamFilter;
+        
         private float _pieceChecker;
         private float _yPosition;
         private bool _isActive;
 
         public void Initialize()
         {
+            _iceCreamFilter = transform.Find("IceCreamFilter");
+            
             _yPosition = transform.position.y;
             _pieceChecker = 0;
             lookAt = LookAtMode.None;
@@ -53,7 +57,7 @@ namespace Game.CreamMachineSystem.Controllers
             {
                 _pieceChecker = 0;
                 var piece = Instantiate(testPiece);
-                piece.transform.position = transform.position;
+                piece.transform.position = _iceCreamFilter.position;
                 piece.transform.DOMove(spline.GetPoint(NormalizedT),3f);
                 var look = Quaternion.LookRotation(spline.GetTangent(NormalizedT));
                 piece.transform.DORotateQuaternion(look, 3f);

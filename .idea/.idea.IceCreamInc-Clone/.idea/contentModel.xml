@@ -466,9 +466,6 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Config" t="Include">
-            <e p="GameConfig.cs" t="Include" />
-          </e>
           <e p="Game" t="Include">
             <e p="CreamMachineSystem" t="Include">
               <e p="Base" t="Include">
@@ -486,8 +483,13 @@
                 <e p="IceCreamBase.cs" t="Include" />
               </e>
               <e p="Managers" t="Include">
+                <e p="CreamPiecePoolManager.cs" t="Include" />
                 <e p="CreamSplineManager.cs" t="Include" />
               </e>
+            </e>
+            <e p="LevelSystem" t="Include">
+              <e p="LevelData.cs" t="Include" />
+              <e p="LevelGenerator.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="GameManager.cs" t="Include" />
@@ -501,6 +503,7 @@
           </e>
           <e p="Helpers" t="Include">
             <e p="CreamButton.cs" t="Include" />
+            <e p="GenericSingleton.cs" t="Include" />
             <e p="Utils" t="Include">
               <e p="OnurExtensionMethods.cs" t="Include" />
               <e p="Timer.cs" t="Include" />

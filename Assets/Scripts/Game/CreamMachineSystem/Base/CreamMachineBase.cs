@@ -1,4 +1,5 @@
-﻿using Game.CreamMachineSystem.Controllers;
+﻿using DG.Tweening;
+using Game.CreamMachineSystem.Controllers;
 using Game.IceCreamSystem.Base;
 using Game.View.Helpers;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace Game.CreamMachineSystem.Base
     public class CreamMachineBase : MonoBehaviour
     {
         public IceCreamBase CurrentIceCream;
+
+        private Transform _chocolateStick;
+        private Transform _vanillaStick;
         
         #region Controllers
 
@@ -25,6 +29,9 @@ namespace Game.CreamMachineSystem.Base
             _creamMachineMovementController = GetComponent<CreamMachineMovementController>(); 
             //gameObject.AddComponent<CreamMachineMovementController>(); 
             _creamMachineCreamController = new CreamMachineCreamController();
+
+            _chocolateStick = transform.Find("ChocolateStick");
+            _vanillaStick = transform.Find("VanillaStick");
         }
         
         public void Initialize()
@@ -38,6 +45,20 @@ namespace Game.CreamMachineSystem.Base
         {
             _playerInputController.SubscribeHoldingEvent(_creamMachineMovementController.MoveAroundCurve);
             _playerInputController.SubscribeReleasingEvent(_creamMachineMovementController.Stop);
+            
+            _playerInputController.SubscribeHoldingEvent(CreamType.CHOCOLATE, () =>
+                _chocolateStick.DORotate(Vector3.forward * 45f, 1f)
+                );
+            _playerInputController.SubscribeReleasingEvent(CreamType.CHOCOLATE, () =>
+                _chocolateStick.DORotate(Vector3.zero, 1f)
+            );
+            
+            _playerInputController.SubscribeHoldingEvent(CreamType.VANILLA, () =>
+                _vanillaStick.DORotate(Vector3.forward * 45f, 1f)
+            );
+            _playerInputController.SubscribeReleasingEvent(CreamType.VANILLA, () =>
+                _vanillaStick.DORotate(Vector3.zero, 1f)
+            );
         }
     }
 }
