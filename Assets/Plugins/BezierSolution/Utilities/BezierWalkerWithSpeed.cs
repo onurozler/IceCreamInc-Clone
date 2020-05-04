@@ -47,8 +47,8 @@ namespace BezierSolution
 
 			Vector3 targetPos = spline.MoveAlongSpline( ref m_normalizedT, targetSpeed * deltaTime );
 
-			transform.position = targetPos;
-			//transform.position = Vector3.Lerp( transform.position, targetPos, movementLerpModifier * deltaTime );
+			//transform.position = targetPos;
+			transform.position = Vector3.Lerp( transform.position, targetPos, 2f * deltaTime );
 
 			bool movingForward = MovingForward;
 

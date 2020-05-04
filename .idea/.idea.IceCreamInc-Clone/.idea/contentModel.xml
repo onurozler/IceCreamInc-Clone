@@ -466,6 +466,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Config" t="Include">
+            <e p="GameConfig.cs" t="Include" />
+          </e>
           <e p="Game" t="Include">
             <e p="CreamMachineSystem" t="Include">
               <e p="Base" t="Include">
@@ -474,6 +477,15 @@
               <e p="Controllers" t="Include">
                 <e p="CreamMachineInputController.cs" t="Include" />
                 <e p="CreamMachineMovementController.cs" t="Include" />
+              </e>
+            </e>
+            <e p="IceCreamSystem" t="Include">
+              <e p="Base" t="Include">
+                <e p="IceCreamBase.cs" t="Include" />
+              </e>
+              <e p="Managers" t="Include">
+                <e p="IceCreamSpline.cs" t="Include" />
+                <e p="IceCreamSplineManager.cs" t="Include" />
               </e>
             </e>
             <e p="Managers" t="Include">
