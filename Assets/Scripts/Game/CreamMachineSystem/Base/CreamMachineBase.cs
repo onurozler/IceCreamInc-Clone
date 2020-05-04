@@ -14,6 +14,7 @@ namespace Game.CreamMachineSystem.Base
 
         private PlayerInputController _playerInputController;
         private CreamMachineMovementController _creamMachineMovementController;
+        private CreamMachineCreamController _creamMachineCreamController;
 
         #endregion
 
@@ -21,14 +22,17 @@ namespace Game.CreamMachineSystem.Base
         private void OnInstaller(PlayerInputController playerInputController)
         {
             _playerInputController = playerInputController;
+            _creamMachineMovementController = gameObject.AddComponent<CreamMachineMovementController>();
+            _creamMachineCreamController = gameObject.AddComponent<CreamMachineCreamController>();
+            
+            _creamMachineMovementController.Initialize();
+            _creamMachineCreamController.Initialize(_creamMachineMovementController);
         }
         
         public void Initialize()
         {
-            _creamMachineMovementController = gameObject.AddComponent<CreamMachineMovementController>();
             _creamMachineMovementController.Initialize();
             _creamMachineMovementController.SetBezierSpline(CurrentIceCream.CreamSplineManager.GetCreamByLayer(0).BezierSpline);
-
             InputEventsSubscriptions();
         }
 
@@ -36,8 +40,6 @@ namespace Game.CreamMachineSystem.Base
         {
             _playerInputController.SubscribeHoldingEvent(_creamMachineMovementController.MoveAroundCurve);
             _playerInputController.SubscribeReleasingEvent(_creamMachineMovementController.Stop);
-
-            //_creamMachineInputController.OnReleasing += _creamMachineMovementController.Stop;
         }
     }
 }

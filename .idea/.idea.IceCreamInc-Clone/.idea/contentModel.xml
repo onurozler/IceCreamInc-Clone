@@ -475,11 +475,13 @@
                 <e p="CreamMachineBase.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
+                <e p="CreamMachineCreamController.cs" t="Include" />
                 <e p="CreamMachineMovementController.cs" t="Include" />
               </e>
             </e>
             <e p="IceCreamSystem" t="Include">
               <e p="Base" t="Include">
+                <e p="CreamPiece.cs" t="Include" />
                 <e p="CreamSpline.cs" t="Include" />
                 <e p="IceCreamBase.cs" t="Include" />
               </e>
