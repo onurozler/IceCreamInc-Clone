@@ -2,6 +2,7 @@
 using BezierSolution;
 using DG.Tweening;
 using Game.IceCreamSystem.Base;
+using Game.IceCreamSystem.Managers;
 using Game.View.Helpers;
 using UnityEngine;
 using Utils;
@@ -12,9 +13,7 @@ namespace Game.CreamMachineSystem.Controllers
     {
         public Action<CreamType,BezierSpline> OnCreamGenerated;
         
-        public CreamPiece testPiece;
-
-
+        
         private PlayerInputController _playerInputController;
         
         private Transform _iceCreamFilter;
@@ -62,7 +61,7 @@ namespace Game.CreamMachineSystem.Controllers
             if (_pieceChecker > 0.15f)
             {
                 _pieceChecker = 0;
-                var piece = Instantiate(testPiece);
+                var piece = CreamPiecePoolManager.Instance.GetCreamAvailableCream(CreamType.VANILLA);
                 piece.transform.position = _iceCreamFilter.position;
                 piece.transform.DOMove(spline.GetPoint(NormalizedT),3f);
                 var look = Quaternion.LookRotation(spline.GetTangent(NormalizedT));
