@@ -9,7 +9,7 @@ namespace Game.LevelSystem
 {
     public class LevelGenerator : MonoBehaviour
     {
-        public Action<Sprite> OnLevelLoaded;
+        public Action<LevelData> OnLevelLoaded;
         
         private const string LEVEL_DATA_PATH = "LevelDatas/";
         private int _levelIndex;
@@ -35,7 +35,7 @@ namespace Game.LevelSystem
                 _levelIndex = 1;
             
             _iceCreamBase.CreamSplineManager.UpdateCreamInfos(levelData.CreamInfos);
-            OnLevelLoaded.SafeInvoke(levelData.LevelImage);
+            OnLevelLoaded.SafeInvoke(levelData);
             _levelIndex++;
             
             

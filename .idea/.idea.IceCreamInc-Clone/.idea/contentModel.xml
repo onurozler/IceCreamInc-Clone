@@ -504,6 +504,7 @@
             <e p="View" t="Include">
               <e p="Helpers" t="Include">
                 <e p="GameFinishedPopUp.cs" t="Include" />
+                <e p="MatchPopUp.cs" t="Include" />
                 <e p="PlayerInputController.cs" t="Include" />
               </e>
               <e p="PlayerView.cs" t="Include" />

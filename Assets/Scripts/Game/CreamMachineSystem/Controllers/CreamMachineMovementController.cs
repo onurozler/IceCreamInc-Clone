@@ -42,13 +42,13 @@ namespace Game.CreamMachineSystem.Controllers
         {
             spline = bezierSpline;
         }
-        
-        public void MoveAroundCurve()
+
+        private void MoveAroundCurve()
         {
             _isActive = true;
         }
 
-        public void Stop()
+        private void Stop()
         {
             _isActive = false;
         }

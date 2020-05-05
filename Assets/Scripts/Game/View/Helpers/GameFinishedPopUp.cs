@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.LevelSystem.Events;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.View.Helpers
@@ -7,16 +8,19 @@ namespace Game.View.Helpers
     {
         private Text _percentageText;
         private Button _nextLevelButton;
-        
+
         public void Initialize()
         {
             _percentageText = GetComponentInChildren<Text>();
             _nextLevelButton = GetComponentInChildren<Button>();
+            
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,Show);
         }
 
-        public void Show(int percentage)
+        private void Show()
         {
-            _percentageText.text = "%" + percentage;
+            gameObject.SetActive(true);
+            _percentageText.text = "%" + 55;
         }
         
     }
