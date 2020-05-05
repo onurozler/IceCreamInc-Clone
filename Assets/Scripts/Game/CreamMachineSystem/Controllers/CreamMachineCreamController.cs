@@ -1,4 +1,5 @@
 ﻿using Game.IceCreamSystem.Base;
+using UnityEngine;
 
 namespace Game.CreamMachineSystem.Controllers
 {
@@ -20,7 +21,7 @@ namespace Game.CreamMachineSystem.Controllers
             _currentIceCream = iceBase;
             _creamMachineMovementController = creamMachineMovementController;
             _creamMachineMovementController.OnPathCompleted += UpdateLayer;
-            //_creamMachineMovementController.OnCreamGenerated += GeneratedCream;
+            _creamMachineMovementController.OnCreamGenerated += GeneratedCream;
             
             UpdateLayer();
         }

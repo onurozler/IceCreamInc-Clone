@@ -3,6 +3,7 @@ using BezierSolution;
 using DG.Tweening;
 using Game.IceCreamSystem.Base;
 using Game.IceCreamSystem.Managers;
+using Game.View;
 using Game.View.Helpers;
 using UnityEngine;
 using Utils;
@@ -11,9 +12,7 @@ namespace Game.CreamMachineSystem.Controllers
 {
     public class CreamMachineMovementController : BezierWalkerWithSpeed
     {
-        public Action<CreamType,BezierSpline> OnCreamGenerated;
-        
-        
+        public Action<CreamType> OnCreamGenerated;
         private PlayerInputController _playerInputController;
         
         private Transform _iceCreamFilter;
@@ -24,6 +23,9 @@ namespace Game.CreamMachineSystem.Controllers
         public void Initialize(PlayerInputController playerInputController)
         {
             _playerInputController = playerInputController;
+            _playerInputController.SubscribeHoldingEvent(CreamType.CHOCOLATE,()=>GenerateCream(CreamType.CHOCOLATE));
+            _playerInputController.SubscribeHoldingEvent(CreamType.VANILLA,()=>GenerateCream(CreamType.VANILLA));
+            
             _iceCreamFilter = transform.Find("IceCreamFilter");
             _yPosition = transform.position.y;
             _pieceChecker = 0;
@@ -58,18 +60,25 @@ namespace Game.CreamMachineSystem.Controllers
         private void UpdateHeightPosition()
         {
             _pieceChecker += Time.deltaTime;
+            transform.ChangePositionY(_yPosition);
+        }
+
+        private void GenerateCream(CreamType creamType)
+        {
             if (_pieceChecker > 0.15f)
             {
                 _pieceChecker = 0;
-                var piece = CreamPiecePoolManager.Instance.GetCreamAvailableCream(CreamType.VANILLA);
+                var piece = CreamPiecePoolManager.Instance.GetCreamAvailableCream(creamType);
                 piece.transform.position = _iceCreamFilter.position;
-                piece.transform.DOMove(spline.GetPoint(NormalizedT),3f);
+                piece.transform.DOMove(spline.GetPoint(NormalizedT), 3f);
                 var look = Quaternion.LookRotation(spline.GetTangent(NormalizedT));
                 piece.transform.DORotateQuaternion(look, 3f);
                 
-                //OnCreamGenerated.SafeInvoke(piece.CreamType,spline);
+                
+                PlayerView.Instance.UpdateProgressBar((NormalizedT * 0.125f) * 0.14f);
+
+                OnCreamGenerated.SafeInvoke(creamType);
             }
-            transform.ChangePositionY(_yPosition);
         }
     }
 }
