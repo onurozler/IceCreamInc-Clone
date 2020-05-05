@@ -15,6 +15,12 @@ namespace Game.View.Helpers
             _percentageText = GetComponentInChildren<Text>();
             _nextLevelButton = GetComponentInChildren<Button>();
             
+            _nextLevelButton.onClick.AddListener(() =>
+            {
+                LevelEvents.InvokeEvent(LevelEventType.ON_STARTED);
+                gameObject.SetActive(false);
+            });
+            
             LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,Show);
         }
 

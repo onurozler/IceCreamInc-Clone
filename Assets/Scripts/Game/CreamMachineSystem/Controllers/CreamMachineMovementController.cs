@@ -1,6 +1,7 @@
 ﻿using System;
 using BezierSolution;
 using Game.IceCreamSystem.Base;
+using Game.LevelSystem.Events;
 using Game.View.Helpers;
 using UnityEngine;
 using Utils;
@@ -13,7 +14,8 @@ namespace Game.CreamMachineSystem.Controllers
         public Action<CreamType,BezierSpline,Transform> OnCreamGenerated;
         
         private PlayerInputController _playerInputController;
-        
+
+        private Vector3 _firstPosition;
         private Transform _iceCreamFilter;
         private float _pieceChecker;
         private float _yPosition;
@@ -27,10 +29,13 @@ namespace Game.CreamMachineSystem.Controllers
             _playerInputController.SubscribeHoldingEvent(CreamType.VANILLA,()=>GenerateCream(CreamType.VANILLA));
             _playerInputController.SubscribeHoldingEvent(MoveAroundCurve);
             _playerInputController.SubscribeReleasingEvent(Stop);
+            
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED, () => transform.position = _firstPosition);
         }
         
         public void Initialize()
         {
+            _firstPosition = transform.position;
             _iceCreamFilter = transform.Find("IceCreamFilter");
             _yPosition = transform.position.y;
             _pieceChecker = 0;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BezierSolution;
+﻿using BezierSolution;
 using DG.Tweening;
 using Game.CreamMachineSystem.Managers;
 using Game.IceCreamSystem.Base;
@@ -26,11 +25,19 @@ namespace Game.CreamMachineSystem.Controllers
         {
             _playerView = playerView;
             _currentIceCream = iceBase;
-            _currentLayer = 0;
+            
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,() =>
+            {
+                CreamPiecePoolManager.Instance.DeactivateWholePool();
+                _currentLayer = 0;
+                UpdateLayer();
+            });
         }
         
         public void Initialize(CreamMachineMovementController creamMachineMovementController)
         {
+            _currentLayer = 0;
+
             _creamMachineMovementController = creamMachineMovementController;
             
             _creamMachineMovementController.OnPathCompleted += UpdateLayer;

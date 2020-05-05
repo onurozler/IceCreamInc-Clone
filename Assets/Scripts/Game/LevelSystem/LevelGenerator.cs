@@ -20,6 +20,7 @@ namespace Game.LevelSystem
         private void OnInstaller(IceCreamBase iceCream)
         {
             _iceCreamBase = iceCream;
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,GenerateLevel);
         }
         
         public void Initialize()
