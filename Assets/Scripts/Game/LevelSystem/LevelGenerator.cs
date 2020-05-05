@@ -30,10 +30,11 @@ namespace Game.LevelSystem
         public void GenerateLevel()
         {
             var levelData = Resources.Load<LevelData>(LEVEL_DATA_PATH+"Level"+_levelIndex);
+            if (levelData == null)
+                _levelIndex = 1;
+            
             _iceCreamBase.CreamSplineManager.UpdateCreamInfos(levelData.CreamInfos);
-            
             OnLevelLoaded.SafeInvoke(levelData.LevelImage);
-            
             _levelIndex++;
         }
     }

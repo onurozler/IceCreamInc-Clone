@@ -9,8 +9,9 @@ namespace Installers
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private CreamMachineBase _creamMachineBase;
         [SerializeField] private IceCreamBase _iceCreamBase;
+        [SerializeField] private CreamMachineBase _creamMachineBase;
+
         [SerializeField] private PlayerInputController _playerInput;
         [SerializeField] private LevelGenerator _levelGenerator;
         

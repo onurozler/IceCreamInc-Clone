@@ -27,8 +27,7 @@ namespace Game.CreamMachineSystem.Base
         {
             _playerInputController = playerInputController;
             _creamMachineMovementController = GetComponent<CreamMachineMovementController>(); 
-            //gameObject.AddComponent<CreamMachineMovementController>(); 
-            _creamMachineCreamController = new CreamMachineCreamController();
+            _creamMachineCreamController = GetComponent<CreamMachineCreamController>(); 
 
             _chocolateStick = transform.Find("ChocolateStick");
             _vanillaStick = transform.Find("VanillaStick");
@@ -36,16 +35,13 @@ namespace Game.CreamMachineSystem.Base
         
         public void Initialize()
         {
-            _creamMachineMovementController.Initialize(_playerInputController);
-            _creamMachineCreamController.Initialize(_creamMachineMovementController,CurrentIceCream);
+            _creamMachineMovementController.Initialize();
+            _creamMachineCreamController.Initialize(_creamMachineMovementController);
             InputEventsSubscriptions();
         }
 
         private void InputEventsSubscriptions()
         {
-            _playerInputController.SubscribeHoldingEvent(_creamMachineMovementController.MoveAroundCurve);
-            _playerInputController.SubscribeReleasingEvent(_creamMachineMovementController.Stop);
-            
             _playerInputController.SubscribeHoldingEvent(CreamType.CHOCOLATE, () =>
                 _chocolateStick.DORotate(Vector3.forward * 45f, 1f)
                 );
