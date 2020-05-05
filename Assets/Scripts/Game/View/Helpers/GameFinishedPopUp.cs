@@ -1,4 +1,5 @@
-﻿using Game.LevelSystem.Events;
+﻿using Game.CreamMachineSystem.Managers;
+using Game.LevelSystem.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ namespace Game.View.Helpers
         private void Show()
         {
             gameObject.SetActive(true);
-            _percentageText.text = "%" + 55;
+            _percentageText.text = "%" + Mathf.FloorToInt(CreamPercentageManager.CurrentPercentage);
         }
         
     }

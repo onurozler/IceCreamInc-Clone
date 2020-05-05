@@ -47,7 +47,7 @@ namespace Game.CreamMachineSystem.Controllers
             var look = Quaternion.LookRotation(bezier.GetTangent(_creamMachineMovementController.NormalizedT));
             piece.transform.DORotateQuaternion(look, 3f);
             
-            CreamPercentageManager.AddCurrent(new CreamInfo(_currentLayer,creamType));
+            CreamPercentageManager.AddCurrent(new CreamInfo(_currentLayer-1,creamType));
 
             _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.15f);
         }
@@ -71,7 +71,7 @@ namespace Game.CreamMachineSystem.Controllers
         {
             if (_currentLayer > 8)
             {
-                Debug.Log(CreamPercentageManager.CalculatePercentage(_currentIceCream.CreamSplineManager.GetIceCreamInfos()));
+                CreamPercentageManager.CalculatePercentage(_currentIceCream.CreamSplineManager.GetIceCreamInfos());
                 LevelEvents.InvokeEvent(LevelEventType.ON_FINISHED);
             }
         }

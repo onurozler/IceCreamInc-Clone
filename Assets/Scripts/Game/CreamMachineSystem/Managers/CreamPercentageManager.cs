@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Game.IceCreamSystem.Base;
+using UnityEngine;
 
 namespace Game.CreamMachineSystem.Managers
 {
     public static class CreamPercentageManager
     {
+        public static float CurrentPercentage;
+        
         private static List<CreamInfo> _creamInfos;
         
-        public static float CalculatePercentage(List<CreamInfo> level)
+        public static void CalculatePercentage(List<CreamInfo> level)
         {
             // I assume we have 8 layers always
             float percentage = 0;
             int total = _creamInfos.Count;
-            float increasingRate = 100f / 8 / total;
+            float increasingRate = 100f / total;
             
             foreach (var levelInfo in level)
             {
@@ -26,7 +29,8 @@ namespace Game.CreamMachineSystem.Managers
             }
             
             _creamInfos.Clear();
-            return percentage;
+
+            CurrentPercentage = percentage;
         }
 
         public static void AddCurrent(CreamInfo creamInfo)
