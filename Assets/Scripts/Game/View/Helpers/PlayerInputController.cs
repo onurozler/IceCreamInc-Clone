@@ -12,6 +12,15 @@ namespace Game.View.Helpers
     {
         [SerializeField] private List<CreamButton> _creamButtons;
 
+        public void ChangeButtonStatus(bool status)
+        {
+            foreach (var button in _creamButtons)
+            {
+                button.IsActive = status;
+            }
+        }
+        
+        
         public void SubscribeHoldingEvent(Action action)
         {
             foreach (var creamButton in _creamButtons)

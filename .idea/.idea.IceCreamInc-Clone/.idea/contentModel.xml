@@ -488,6 +488,10 @@
               </e>
             </e>
             <e p="LevelSystem" t="Include">
+              <e p="Events" t="Include">
+                <e p="LevelEvent.cs" t="Include" />
+                <e p="LevelEvents.cs" t="Include" />
+              </e>
               <e p="LevelData.cs" t="Include" />
               <e p="LevelGenerator.cs" t="Include" />
             </e>
@@ -496,6 +500,7 @@
             </e>
             <e p="View" t="Include">
               <e p="Helpers" t="Include">
+                <e p="GameFinishedPopUp.cs" t="Include" />
                 <e p="PlayerInputController.cs" t="Include" />
               </e>
               <e p="PlayerView.cs" t="Include" />

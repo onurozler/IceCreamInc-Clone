@@ -12,11 +12,16 @@ namespace Helpers
         
         public Action OnButtonHolding;
         public Action OnButtonReleased;
+
+        public bool IsActive = true;
         
         private bool _isHolding;
 
         private void Update()
         {
+            if(!IsActive)
+                return;
+            
             if (_isHolding)
             {
                 OnButtonHolding.SafeInvoke();

@@ -1,13 +1,27 @@
-﻿using Helpers;
+﻿using System;
+using Game.View.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.View
 {
-    public class PlayerView : GenericSingleton<PlayerView>
+    public class PlayerView: MonoBehaviour
     {
-        [SerializeField] 
-        private Image _progressBar;
+        [SerializeField] private Image _progressBar;
+
+        private GameFinishedPopUp _gameFinishedPopUp;
+
+
+        private void OnInstaller()
+        {
+            
+        }
+
+        private void Awake()
+        {
+            _gameFinishedPopUp = GetComponentInChildren<GameFinishedPopUp>();
+            _gameFinishedPopUp.Initialize();
+        }
 
         public void UpdateProgressBar(float value)
         {

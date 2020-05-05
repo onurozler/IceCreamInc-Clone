@@ -3,6 +3,7 @@ using DG.Tweening;
 using Game.IceCreamSystem.Base;
 using Game.IceCreamSystem.Managers;
 using Game.LevelSystem;
+using Game.LevelSystem.Events;
 using Game.View;
 using UnityEngine;
 using Zenject;
@@ -11,16 +12,16 @@ namespace Game.CreamMachineSystem.Controllers
 {
     public class CreamMachineCreamController : MonoBehaviour
     {
-        private LevelGenerator _levelGenerator;
+        private PlayerView _playerView;
         private IceCreamBase _currentIceCream;
         private int _currentLayer;
         
         private CreamMachineMovementController _creamMachineMovementController;
 
         [Inject]
-        public void OnInstaller(IceCreamBase iceBase, LevelGenerator levelGenerator)
+        public void OnInstaller(IceCreamBase iceBase, LevelGenerator levelGenerator, PlayerView playerView)
         {
-            _levelGenerator = levelGenerator;
+            _playerView = playerView;
             _currentIceCream = iceBase;
             _currentLayer = 0;
         }
@@ -43,7 +44,7 @@ namespace Game.CreamMachineSystem.Controllers
             var look = Quaternion.LookRotation(bezier.GetTangent(_creamMachineMovementController.NormalizedT));
             piece.transform.DORotateQuaternion(look, 3f);
 
-            PlayerView.Instance.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.14f);
+            _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.14f);
         }
         
         private void UpdateLayer()
@@ -65,7 +66,7 @@ namespace Game.CreamMachineSystem.Controllers
         {
             if (_currentLayer >= 8)
             {
-                _levelGenerator.GenerateLevel();
+                LevelEvents.InvokeEvent(LevelEventType.ON_FINISHED);
             }
         }
     }

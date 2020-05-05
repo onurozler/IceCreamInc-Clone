@@ -1,5 +1,6 @@
 ﻿using System;
 using Game.IceCreamSystem.Base;
+using Game.LevelSystem.Events;
 using UnityEngine;
 using Utils;
 using Zenject;
@@ -36,6 +37,8 @@ namespace Game.LevelSystem
             _iceCreamBase.CreamSplineManager.UpdateCreamInfos(levelData.CreamInfos);
             OnLevelLoaded.SafeInvoke(levelData.LevelImage);
             _levelIndex++;
+            
+            LevelEvents.InvokeEvent(LevelEventType.ON_STARTED);
         }
     }
 }
