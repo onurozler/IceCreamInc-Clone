@@ -1,5 +1,7 @@
-﻿using BezierSolution;
+﻿using System.Collections.Generic;
+using BezierSolution;
 using DG.Tweening;
+using Game.CreamMachineSystem.Managers;
 using Game.IceCreamSystem.Base;
 using Game.IceCreamSystem.Managers;
 using Game.LevelSystem;
@@ -13,13 +15,14 @@ namespace Game.CreamMachineSystem.Controllers
     public class CreamMachineCreamController : MonoBehaviour
     {
         private PlayerView _playerView;
+        private LevelGenerator _levelGenerator;
         private IceCreamBase _currentIceCream;
         private int _currentLayer;
         
         private CreamMachineMovementController _creamMachineMovementController;
 
         [Inject]
-        public void OnInstaller(IceCreamBase iceBase, LevelGenerator levelGenerator, PlayerView playerView)
+        public void OnInstaller(IceCreamBase iceBase,  PlayerView playerView)
         {
             _playerView = playerView;
             _currentIceCream = iceBase;
@@ -43,8 +46,10 @@ namespace Game.CreamMachineSystem.Controllers
             piece.transform.DOMove(bezier.GetPoint(_creamMachineMovementController.NormalizedT), 3f);
             var look = Quaternion.LookRotation(bezier.GetTangent(_creamMachineMovementController.NormalizedT));
             piece.transform.DORotateQuaternion(look, 3f);
+            
+            CreamPercentageManager.AddCurrent(new CreamInfo(_currentLayer,creamType));
 
-            _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.14f);
+            _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.15f);
         }
         
         private void UpdateLayer()
@@ -64,8 +69,9 @@ namespace Game.CreamMachineSystem.Controllers
 
         private void CheckLevelStatus()
         {
-            if (_currentLayer >= 8)
+            if (_currentLayer > 8)
             {
+                Debug.Log(CreamPercentageManager.CalculatePercentage(_currentIceCream.CreamSplineManager.GetIceCreamInfos()));
                 LevelEvents.InvokeEvent(LevelEventType.ON_FINISHED);
             }
         }

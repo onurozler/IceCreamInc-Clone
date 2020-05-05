@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.IceCreamSystem.Base;
+using Game.LevelSystem.Events;
 using Helpers;
 using UnityEngine;
 
@@ -12,7 +13,13 @@ namespace Game.View.Helpers
     {
         [SerializeField] private List<CreamButton> _creamButtons;
 
-        public void ChangeButtonStatus(bool status)
+        public void Initialize()
+        {
+            LevelEvents.SubscribeEvent(LevelEventType.ON_STARTED, () => ChangeButtonStatus(true));
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED, () => ChangeButtonStatus(false));
+        }
+
+        private void ChangeButtonStatus(bool status)
         {
             foreach (var button in _creamButtons)
             {

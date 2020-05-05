@@ -19,7 +19,7 @@ namespace Game.View
 
         private void Awake()
         {
-            _gameFinishedPopUp = GetComponentInChildren<GameFinishedPopUp>();
+            _gameFinishedPopUp = GetComponentInChildren<GameFinishedPopUp>(true);
             _gameFinishedPopUp.Initialize();
         }
 

@@ -27,5 +27,16 @@ namespace Game.IceCreamSystem.Managers
                     creamSpline.CreamInfo.CreamType = info.CreamType;
             }
         }
+
+        public List<CreamInfo> GetIceCreamInfos()
+        {
+            List<CreamInfo> creamInfos = new List<CreamInfo>();
+            foreach (var creamSpline in _iceCreamSplines)
+            {
+                creamInfos.Add(creamSpline.CreamInfo);
+            }
+
+            return creamInfos;
+        }
     }
 }

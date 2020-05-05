@@ -35,6 +35,7 @@ namespace Game.CreamMachineSystem.Base
         
         public void Initialize()
         {
+            _playerInputController.Initialize();
             _creamMachineMovementController.Initialize();
             _creamMachineCreamController.Initialize(_creamMachineMovementController);
             InputEventsSubscriptions();
@@ -42,6 +43,8 @@ namespace Game.CreamMachineSystem.Base
 
         private void InputEventsSubscriptions()
         {
+            // Moving machine sticks
+            
             _playerInputController.SubscribeHoldingEvent(CreamType.CHOCOLATE, () =>
                 _chocolateStick.DORotate(Vector3.forward * 45f, 1f)
                 );

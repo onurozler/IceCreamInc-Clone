@@ -38,7 +38,9 @@ namespace Game.LevelSystem
             OnLevelLoaded.SafeInvoke(levelData.LevelImage);
             _levelIndex++;
             
+            
             LevelEvents.InvokeEvent(LevelEventType.ON_STARTED);
         }
+        
     }
 }
