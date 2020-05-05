@@ -2,6 +2,7 @@
 using BezierSolution;
 using DG.Tweening;
 using Game.IceCreamSystem.Base;
+using Game.View.Helpers;
 using UnityEngine;
 using Utils;
 
@@ -9,20 +10,22 @@ namespace Game.CreamMachineSystem.Controllers
 {
     public class CreamMachineMovementController : BezierWalkerWithSpeed
     {
-        public Action OnGenerateCream;
+        public Action<CreamType,BezierSpline> OnCreamGenerated;
         
         public CreamPiece testPiece;
 
-        private Transform _iceCreamFilter;
+
+        private PlayerInputController _playerInputController;
         
+        private Transform _iceCreamFilter;
         private float _pieceChecker;
         private float _yPosition;
         private bool _isActive;
 
-        public void Initialize()
+        public void Initialize(PlayerInputController playerInputController)
         {
+            _playerInputController = playerInputController;
             _iceCreamFilter = transform.Find("IceCreamFilter");
-            
             _yPosition = transform.position.y;
             _pieceChecker = 0;
             lookAt = LookAtMode.None;
@@ -58,14 +61,14 @@ namespace Game.CreamMachineSystem.Controllers
             _pieceChecker += Time.deltaTime;
             if (_pieceChecker > 0.15f)
             {
-                OnGenerateCream.SafeInvoke();
                 _pieceChecker = 0;
-                
                 var piece = Instantiate(testPiece);
                 piece.transform.position = _iceCreamFilter.position;
                 piece.transform.DOMove(spline.GetPoint(NormalizedT),3f);
                 var look = Quaternion.LookRotation(spline.GetTangent(NormalizedT));
                 piece.transform.DORotateQuaternion(look, 3f);
+                
+                //OnCreamGenerated.SafeInvoke(piece.CreamType,spline);
             }
             transform.ChangePositionY(_yPosition);
         }

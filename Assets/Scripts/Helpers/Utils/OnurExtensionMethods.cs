@@ -16,6 +16,11 @@ namespace Utils
         {
             if (source != null) source.Invoke(value);
         }
+        
+        public static void SafeInvoke<T1, T2>(this Action<T1, T2> source, T1 firstValue, T2 secondValue)
+        {
+            if (source != null) source.Invoke(firstValue, secondValue);
+        }
 
         public static List<T> Clone<T>(this List<T> listToClone) where T : ICloneable  
         {  

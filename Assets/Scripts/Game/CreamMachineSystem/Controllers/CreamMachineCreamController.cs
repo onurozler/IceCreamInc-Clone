@@ -20,11 +20,12 @@ namespace Game.CreamMachineSystem.Controllers
             _currentIceCream = iceBase;
             _creamMachineMovementController = creamMachineMovementController;
             _creamMachineMovementController.OnPathCompleted += UpdateLayer;
-
+            //_creamMachineMovementController.OnCreamGenerated += GeneratedCream;
+            
             UpdateLayer();
         }
 
-        private void GenerateCream()
+        private void GeneratedCream(CreamType creamType)
         {
             
         }

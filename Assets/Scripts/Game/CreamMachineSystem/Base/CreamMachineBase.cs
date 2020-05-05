@@ -36,7 +36,7 @@ namespace Game.CreamMachineSystem.Base
         
         public void Initialize()
         {
-            _creamMachineMovementController.Initialize();
+            _creamMachineMovementController.Initialize(_playerInputController);
             _creamMachineCreamController.Initialize(_creamMachineMovementController,CurrentIceCream);
             InputEventsSubscriptions();
         }
