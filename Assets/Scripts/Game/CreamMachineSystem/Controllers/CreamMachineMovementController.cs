@@ -46,7 +46,7 @@ namespace Game.CreamMachineSystem.Controllers
             _yPosition = transform.position.y;
             _pieceChecker = 0;
             lookAt = LookAtMode.None;
-            speed = 2f;
+            speed = GameConfig.MACHINE_SPEED;
         }
         
         public void SetBezierSpline(BezierSpline bezierSpline)

@@ -9,6 +9,7 @@ namespace Game.View.Helpers
     {
         private Text _percentageText;
         private Button _nextLevelButton;
+        public float CurrentPercentage;
 
         public void Initialize()
         {
@@ -23,11 +24,11 @@ namespace Game.View.Helpers
             
             LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,Show);
         }
-
+        
         private void Show()
         {
             gameObject.SetActive(true);
-            _percentageText.text = "Accuracy %" + Mathf.FloorToInt(CreamPercentageManager.CurrentPercentage);
+            _percentageText.text = "Accuracy %" + Mathf.FloorToInt(CurrentPercentage);
         }
         
     }

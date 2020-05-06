@@ -4,15 +4,17 @@ using Game.IceCreamSystem.Base;
 
 namespace Game.CreamMachineSystem.Managers
 {
-    public static class CreamPercentageManager
+    public class CreamPercentageManager
     {
-        public static float CurrentPercentage;
-        
-        private static List<CreamInfo> _creamInfos;
-        
-        public static void CalculatePercentage(List<CreamInfo> level)
+        private List<CreamInfo> _creamInfos;
+
+        public CreamPercentageManager()
         {
-            // I assume we have 8 layers always
+            _creamInfos = new List<CreamInfo>();
+        }
+        
+        public float CalculatePercentage(List<CreamInfo> level)
+        {
             float percentage = 0;
             int total = _creamInfos.Count;
             float increasingRate = 100f / total;
@@ -29,10 +31,10 @@ namespace Game.CreamMachineSystem.Managers
             
             _creamInfos.Clear();
 
-            CurrentPercentage = percentage;
+            return percentage;
         }
 
-        public static void AddCurrent(CreamInfo creamInfo)
+        public void AddCurrent(CreamInfo creamInfo)
         {
            if(_creamInfos == null)
                _creamInfos = new List<CreamInfo>();

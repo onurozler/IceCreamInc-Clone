@@ -7,6 +7,7 @@ using Game.IceCreamSystem.Managers;
 using Game.LevelSystem;
 using Game.LevelSystem.Events;
 using Game.View;
+using Game.View.Helpers;
 using UnityEngine;
 using Zenject;
 
@@ -16,16 +17,21 @@ namespace Game.CreamMachineSystem.Controllers
     {
         private PlayerView _playerView;
         private LevelGenerator _levelGenerator;
+        private GameFinishedPopUp _gameFinishedPopUp;
         private IceCreamBase _currentIceCream;
         private int _currentLayer;
         
         private CreamMachineMovementController _creamMachineMovementController;
+        private CreamPercentageManager _creamPercentageManager;
 
         [Inject]
-        public void OnInstaller(IceCreamBase iceBase,  PlayerView playerView)
+        public void OnInstaller(IceCreamBase iceBase,  PlayerView playerView, GameFinishedPopUp gameFinishedPopUp)
         {
             _playerView = playerView;
             _currentIceCream = iceBase;
+            _gameFinishedPopUp = gameFinishedPopUp;
+            
+            _creamPercentageManager = new CreamPercentageManager();
             
             LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED,() =>
             {
@@ -56,7 +62,7 @@ namespace Game.CreamMachineSystem.Controllers
             var look = Quaternion.LookRotation(bezier.GetTangent(_creamMachineMovementController.NormalizedT));
             piece.transform.DORotateQuaternion(look, 3f);
             
-            CreamPercentageManager.AddCurrent(new CreamInfo(_currentLayer-1,creamType));
+            _creamPercentageManager.AddCurrent(new CreamInfo(_currentLayer-1,creamType));
 
             _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * GameConfig.SMOOTHNESS);
         }
@@ -80,7 +86,8 @@ namespace Game.CreamMachineSystem.Controllers
         {
             if (_currentLayer > 8)
             {
-                CreamPercentageManager.CalculatePercentage(_currentIceCream.CreamSplineManager.GetIceCreamInfos());
+                _gameFinishedPopUp.CurrentPercentage =
+                _creamPercentageManager.CalculatePercentage(_currentIceCream.CreamSplineManager.GetIceCreamInfos());
                 LevelEvents.InvokeEvent(LevelEventType.ON_FINISHED);
             }
         }

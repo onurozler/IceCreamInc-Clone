@@ -11,6 +11,7 @@ namespace Installers
     public class GameInstaller : MonoInstaller
     {
         [SerializeField] private PlayerView _playerView;
+        [SerializeField] private GameFinishedPopUp _gameFinishedPopUp;
         
         [SerializeField] private IceCreamBase _iceCreamBase;
         [SerializeField] private CreamMachineBase _creamMachineBase;
@@ -25,6 +26,7 @@ namespace Installers
             Container.BindInstance(_iceCreamBase);
             Container.BindInstance(_playerInput);
             Container.BindInstance(_levelGenerator);
+            Container.BindInstance(_gameFinishedPopUp);
         }
     }
 }
