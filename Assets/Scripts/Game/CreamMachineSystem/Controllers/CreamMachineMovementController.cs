@@ -30,7 +30,12 @@ namespace Game.CreamMachineSystem.Controllers
             _playerInputController.SubscribeHoldingEvent(MoveAroundCurve);
             _playerInputController.SubscribeReleasingEvent(Stop);
             
-            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED, () => transform.position = _firstPosition);
+            LevelEvents.SubscribeEvent(LevelEventType.ON_FINISHED, 
+                () =>
+                {
+                    transform.position = _firstPosition;
+                    _isActive = false;
+                });
         }
         
         public void Initialize()

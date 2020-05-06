@@ -27,20 +27,22 @@ namespace Game.LevelSystem
         {
             _levelIndex = 1;
             GenerateLevel();
+            LevelEvents.InvokeEvent(LevelEventType.ON_STARTED);
         }
 
-        public void GenerateLevel()
+        private void GenerateLevel()
         {
             var levelData = Resources.Load<LevelData>(LEVEL_DATA_PATH+"Level"+_levelIndex);
+
             if (levelData == null)
+            {
                 _levelIndex = 1;
+                levelData = Resources.Load<LevelData>(LEVEL_DATA_PATH+"Level"+_levelIndex);
+            }
             
             _iceCreamBase.CreamSplineManager.UpdateCreamInfos(levelData.CreamInfos);
             OnLevelLoaded.SafeInvoke(levelData);
             _levelIndex++;
-            
-            
-            LevelEvents.InvokeEvent(LevelEventType.ON_STARTED);
         }
         
     }

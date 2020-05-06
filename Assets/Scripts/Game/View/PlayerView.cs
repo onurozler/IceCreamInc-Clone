@@ -30,6 +30,7 @@ namespace Game.View
 
         private void UpdateLevel(LevelData levelData)
         {
+            _progressBar.fillAmount = 0;
             _progressText.text = "Level " + levelData.LevelIndex;
             _matchPopUp.Show(levelData.LevelImage);
         }

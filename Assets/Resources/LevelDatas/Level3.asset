@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6169eaa35b947314090b9887ffdc8380, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  LevelIndex: 1
+  LevelIndex: 3
   LevelImage: {fileID: 4012441853453414078, guid: 69f744eda53fd714ebedb34666fb3598,
     type: 3}
   CreamInfos:

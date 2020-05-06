@@ -9,8 +9,6 @@ namespace Game.CreamMachineSystem.Base
 {
     public class CreamMachineBase : MonoBehaviour
     {
-        public IceCreamBase CurrentIceCream;
-
         private Transform _chocolateStick;
         private Transform _vanillaStick;
         

@@ -27,7 +27,7 @@ namespace Game.View.Helpers
         private void Show()
         {
             gameObject.SetActive(true);
-            _percentageText.text = "%" + Mathf.FloorToInt(CreamPercentageManager.CurrentPercentage);
+            _percentageText.text = "Accuracy %" + Mathf.FloorToInt(CreamPercentageManager.CurrentPercentage);
         }
         
     }
