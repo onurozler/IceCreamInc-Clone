@@ -18,7 +18,8 @@ namespace Game.IceCreamSystem.Managers
         
         public void Initialize()
         {
-            _creamPieces = GetComponentsInChildren<CreamPiece>()?.ToList() ?? new List<CreamPiece>();
+            _creamPieces = GetComponentsInChildren<CreamPiece>(true)?.ToList() ?? new List<CreamPiece>();
+            DeactivateWholePool();
             _creamPiece = Resources.Load<CreamPiece>(CREAM_PATH);
         }
 
