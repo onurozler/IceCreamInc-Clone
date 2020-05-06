@@ -12,6 +12,7 @@ namespace Game.View
         private Image _progressBar;
         private Text _progressText;
 
+        private SmoothnessSettings _smoothnessSettings;
         private GameFinishedPopUp _gameFinishedPopUp;
         private MatchPopUp _matchPopUp;
         private LevelGenerator _levelGenerator;
@@ -23,6 +24,8 @@ namespace Game.View
             _progressText = _progressBar.GetComponentInChildren<Text>();
             _matchPopUp = GetComponentInChildren<MatchPopUp>();
             _gameFinishedPopUp = GetComponentInChildren<GameFinishedPopUp>(true);
+            _smoothnessSettings = GetComponentInChildren<SmoothnessSettings>();
+            _smoothnessSettings.Initialize();
             _gameFinishedPopUp.Initialize();
             
             _levelGenerator.OnLevelLoaded += UpdateLevel;

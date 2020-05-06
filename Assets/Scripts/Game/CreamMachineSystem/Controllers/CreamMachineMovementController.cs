@@ -1,5 +1,6 @@
 ﻿using System;
 using BezierSolution;
+using Config;
 using Game.IceCreamSystem.Base;
 using Game.LevelSystem.Events;
 using Game.View.Helpers;
@@ -80,7 +81,7 @@ namespace Game.CreamMachineSystem.Controllers
 
         private void GenerateCream(CreamType creamType)
         {
-            if (_pieceChecker > 0.15f)
+            if (_pieceChecker > GameConfig.SMOOTHNESS)
             {
                 _pieceChecker = 0;
                 OnCreamGenerated.SafeInvoke(creamType,spline,_iceCreamFilter);

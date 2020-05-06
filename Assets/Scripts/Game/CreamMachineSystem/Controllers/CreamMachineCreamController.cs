@@ -1,4 +1,5 @@
 ﻿using BezierSolution;
+using Config;
 using DG.Tweening;
 using Game.CreamMachineSystem.Managers;
 using Game.IceCreamSystem.Base;
@@ -57,7 +58,7 @@ namespace Game.CreamMachineSystem.Controllers
             
             CreamPercentageManager.AddCurrent(new CreamInfo(_currentLayer-1,creamType));
 
-            _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * 0.15f);
+            _playerView.UpdateProgressBar(_creamMachineMovementController.NormalizedT * 0.125f * GameConfig.SMOOTHNESS);
         }
         
         private void UpdateLayer()

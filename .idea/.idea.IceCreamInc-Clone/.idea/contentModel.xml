@@ -466,6 +466,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Config" t="Include">
+            <e p="GameConfig.cs" t="Include" />
+          </e>
           <e p="Game" t="Include">
             <e p="CreamMachineSystem" t="Include">
               <e p="Base" t="Include">
@@ -506,6 +509,7 @@
                 <e p="GameFinishedPopUp.cs" t="Include" />
                 <e p="MatchPopUp.cs" t="Include" />
                 <e p="PlayerInputController.cs" t="Include" />
+                <e p="SmoothnessSettings.cs" t="Include" />
               </e>
               <e p="PlayerView.cs" t="Include" />
             </e>
