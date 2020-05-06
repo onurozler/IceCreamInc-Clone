@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Game.IceCreamSystem.Base;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,7 +7,7 @@ using Utils;
 
 namespace Helpers
 {
-    public class CreamButton : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
+    public class CreamButton : MonoBehaviour, IPointerDownHandler,IPointerUpHandler,IPointerEnterHandler, IPointerExitHandler
     {
         public CreamType CreamType;
         
@@ -16,6 +17,8 @@ namespace Helpers
         public bool IsActive = true;
         
         private bool _isHolding;
+        private Tween _animTween;
+
 
         private void Update()
         {
@@ -37,6 +40,24 @@ namespace Helpers
         {
             _isHolding = false;
             OnButtonReleased.SafeInvoke();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if(_animTween != null)
+            {
+                _animTween.Kill();
+            }
+            _animTween = transform.DOScale(0.9f, 0.2f);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if(_animTween != null)
+            {
+                _animTween.Kill();
+            }
+            _animTween = transform.DOScale(1f, 0.2f);
         }
     }
 }

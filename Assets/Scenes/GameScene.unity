@@ -1176,7 +1176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff116ae4e492044c93774b579611536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIceCream: {fileID: 490344712}
 --- !u!23 &477842770
 MeshRenderer:
   m_ObjectHideFlags: 0

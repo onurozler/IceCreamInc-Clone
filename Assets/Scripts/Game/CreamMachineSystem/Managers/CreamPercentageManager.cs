@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Game.IceCreamSystem.Base;
-using UnityEngine;
 
 namespace Game.CreamMachineSystem.Managers
 {
