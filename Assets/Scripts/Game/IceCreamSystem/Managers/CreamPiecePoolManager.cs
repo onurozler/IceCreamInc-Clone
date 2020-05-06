@@ -24,13 +24,14 @@ namespace Game.IceCreamSystem.Managers
 
         public CreamPiece GetCreamAvailableCream(CreamType creamType)
         {
-            var cream = _creamPieces?.FirstOrDefault(x => x.CreamType == creamType && !x.IsActive);
+            var cream = _creamPieces?.FirstOrDefault(x => !x.IsActive);
             if (cream == null)
             {
                 cream = Instantiate(_creamPiece, transform);
+                cream.CreamType = creamType;
                 _creamPieces?.Add(cream);
             }
-
+            
             cream.GetComponentInChildren<MeshRenderer>().material = creamType == CreamType.CHOCOLATE ? 
                 _chocolateMaterial : _vanillaMaterial;
             cream.Activate();
@@ -45,6 +46,7 @@ namespace Game.IceCreamSystem.Managers
             foreach (var creamPiece in _creamPieces)
             {
                 creamPiece.Deactivate();
+                creamPiece.CreamType = CreamType.NONE;
             }
         }
     }

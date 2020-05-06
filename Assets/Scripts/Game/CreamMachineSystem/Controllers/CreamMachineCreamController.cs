@@ -49,6 +49,7 @@ namespace Game.CreamMachineSystem.Controllers
         private void GeneratedCream(CreamType creamType, BezierSpline bezier, Transform iceCreamFilter)
         {
             var piece = CreamPiecePoolManager.Instance.GetCreamAvailableCream(creamType);
+            piece.transform.eulerAngles = new Vector3(-90,0,0);
             piece.transform.position = iceCreamFilter.position;
             piece.transform.DOMove(bezier.GetPoint(_creamMachineMovementController.NormalizedT), 3f);
             var look = Quaternion.LookRotation(bezier.GetTangent(_creamMachineMovementController.NormalizedT));
